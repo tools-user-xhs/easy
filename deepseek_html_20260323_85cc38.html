@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>外贸知识速查 · 精简实用版</title>
+    <!-- 现代字体 Inter & 优雅商务色调 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f5f7fc 0%, #e6ecf5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            padding: 1.5rem;
+            color: #1e2f4d;
+        }
+
+        .master-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            box-shadow: 0 35px 65px -25px rgba(20, 45, 80, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0f2b4f;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.3rem;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #1e3b5c, #143155);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .sub {
+            font-size: 1rem;
+            color: #3e5f7a;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2b5797;
+            padding-left: 1.2rem;
+            background: rgba(220, 235, 250, 0.3);
+            border-radius: 0 20px 20px 0;
+        }
+
+        /* 三列布局：术语 + 渠道 + 客户管理，流程单列独立但保留 */
+        .query-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .query-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.5rem 1.8rem;
+            border: 1px solid rgba(200, 220, 240, 0.8);
+            box-shadow: 0 12px 22px -18px #1e3b5c;
+            transition: transform 0.1s ease;
+        }
+
+        .query-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e3b5c;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .select-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .select-box select {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #c0d4e5;
+            border-radius: 2.5rem;
+            font-size: 0.9rem;
+            background: white;
+            outline: none;
+            transition: 0.15s;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231e3b5c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+            background-size: 0.9rem;
+        }
+
+        .select-box button {
+            background: #1e3b5c;
+            border: none;
+            color: white;
+            padding: 0 1.5rem;
+            border-radius: 2.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 12px -10px #0f2b4f;
+            white-space: nowrap;
+        }
+
+        .select-box button:hover {
+            background: #2b5797;
+            transform: translateY(-1px);
+        }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            min-height: 130px;
+            border: 1px solid #c5d8e8;
+            color: #1e3b5c;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .result-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .result-box .not-found {
+            color: #8a9db0;
+            font-style: italic;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #1e3b5c;
+            background: #e9f0f8;
+            padding: 0.1rem 0.3rem;
+            border-radius: 8px;
+        }
+
+        .time-info {
+            background: rgba(255, 245, 220, 0.6);
+            border-left: 3px solid #e67e22;
+            padding: 0.5rem 0.7rem;
+            border-radius: 1rem;
+            margin: 0.6rem 0;
+            font-size: 0.85rem;
+        }
+
+        /* 精简后的流程卡片独立区域 */
+        .process-section {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid rgba(200, 220, 240, 0.8);
+            margin-top: 0.5rem;
+        }
+        .process-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .process-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f2b4f;
+        }
+        .process-header span {
+            background: #b0c8e0;
+            color: #0f2b4f;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .process-flex {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .process-selector {
+            flex: 2;
+            min-width: 200px;
+        }
+        .process-selector select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 3rem;
+            border: 1px solid #c0d4e5;
+            font-size: 0.95rem;
+            background: white;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231e3b5c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+        }
+        .process-selector button {
+            margin-top: 0.7rem;
+            background: #1e3b5c;
+            border: none;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 3rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .process-result-card {
+            flex: 5;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            padding: 1rem 1.4rem;
+            border: 1px solid #c5d8e8;
+            min-height: 130px;
+        }
+        .footnote {
+            margin-top: 2rem;
+            text-align: center;
+            color: #5f7e9c;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(100,130,170,0.2);
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 880px) {
+            .query-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .process-flex {
+                flex-direction: column;
+            }
+            .master-card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="master-card">
+    <h1>
+        📦 外贸知识速查
+        <span>精简·高频实用</span>
+    </h1>
+    <div class="sub">术语 | 渠道 | 客户习俗 | 核心流程明细 — 快速查询，含实时时区建议</div>
+
+    <!-- 三列区域：术语（EXW/FOB/CIF/CFR置顶）、渠道、客户关系管理 -->
+    <div class="query-grid">
+        <!-- 外贸专业术语 (EXW/FOB/CIF/CFR 强制置顶) -->
+        <div class="query-card">
+            <h2>🔤 核心外贸术语</h2>
+            <div class="select-box">
+                <select id="termSelect">
+                    <option value="" disabled selected>— 选择常用术语 —</option>
+                </select>
+                <button id="termSearchBtn">查询 →</button>
+            </div>
+            <div class="result-box" id="termResult">
+                <p class="not-found">点击查询，查看高频术语解释</p>
+            </div>
+        </div>
+
+        <!-- 客户开发渠道 (不变) -->
+        <div class="query-card">
+            <h2>🤝 客户开发渠道</h2>
+            <div class="select-box">
+                <select id="channelSelect">
+                    <option value="" disabled selected>— 选择渠道 —</option>
+                </select>
+                <button id="channelSearchBtn">查询 →</button>
+            </div>
+            <div class="result-box" id="channelResult">
+                <p class="not-found">选择渠道后点击查询</p>
+            </div>
+        </div>
+
+        <!-- 客户关系管理（含时区 + 习俗，保持原功能不变） -->
+        <div class="query-card">
+            <h2>🌍 客户关系管理</h2>
+            <div class="select-box">
+                <select id="countrySelect">
+                    <option value="" disabled selected>— 请选择国家/地区 —</option>
+                </select>
+                <button id="countrySearchBtn">查询 →</button>
+            </div>
+            <div class="result-box" id="countryResult">
+                <p class="not-found">选择国家后查询当地习俗与当前时间</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 外贸流程明细 (精简内容，每个环节只保留核心操作指引) -->
+    <div class="process-section">
+        <div class="process-header">
+            <h2>📋 外贸流程明细</h2>
+            <span>核心环节·精简指导</span>
+        </div>
+        <div class="process-flex">
+            <div class="process-selector">
+                <select id="processSelect">
+                    <option value="" disabled selected>— 请选择外贸环节 —</option>
+                </select>
+                <button id="processSearchBtn">查询详细操作</button>
+            </div>
+            <div class="process-result-card" id="processResult">
+                <p class="not-found">选择环节后点击查看精简操作指南</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footnote">
+        💡 术语库已精简为最高频词汇，EXW/FOB/CIF/CFR 优先展示 | 流程说明聚焦核心动作 | 国家信息含实时时间与商务提醒
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 外贸术语数据库（精简版，共30个常用术语）----------
+        const termDatabase = {
+            'EXW': 'EXW (Ex Works) 工厂交货。卖方在自己的场所交货，买方承担所有费用和风险，包括装货和运输。',
+            'FOB': 'FOB (Free On Board) 装运港船上交货。卖方在指定装运港将货物交到买方指定的船上即完成交货，风险在货物越过船舷时转移。',
+            'CIF': 'CIF (Cost, Insurance and Freight) 成本+保险费+运费。卖方负责租船订舱、支付运费、购买保险，承担货物越过船舷前的风险。',
+            'CFR': 'CFR (Cost and Freight) 成本加运费。卖方负责租船订舱、支付运费，保险由买方负责，风险转移同FOB。',
+            'DDP': 'DDP (Delivered Duty Paid) 完税后交货。卖方负责运至目的地并办理进口清关，承担所有风险和费用。',
+            'L/C': '信用证 (Letter of Credit)。银行应买方请求开给卖方的一种保证付款凭证，国际贸易主流支付方式。',
+            'T/T': '电汇 (Telegraphic Transfer)。买方通过银行将货款电汇给卖方，常用于定金或尾款，速度快。',
+            'D/P': '付款交单 (Documents against Payment)。卖方通过银行托收，买方付款后才能取得提货单据。',
+            'D/A': '承兑交单 (Documents against Acceptance)。买方承兑远期汇票后即可取得单据，风险较高。',
+            'B/L': '提单 (Bill of Lading)。货物收据、运输合同及物权凭证，海运最重要单据。',
+            'FCL': '整箱货 (Full Container Load)。一个集装箱只装一个货主的货物。',
+            'LCL': '拼箱货 (Less than Container Load)。多个货主拼一个集装箱。',
+            'HS Code': '海关编码，用于商品分类和关税征收，国际通用。',
+            'MOQ': '最小起订量 (Minimum Order Quantity)。供应商要求的最低采购数量。',
+            'OEM': '贴牌生产，供应商按客户要求生产，使用客户品牌。',
+            'ODM': '原始设计制造商，供应商自主设计生产，供客户贴牌。',
+            'Incoterms': '国际贸易术语解释通则，规范双方责任、费用和风险。',
+            'ETA': '预计到港时间 (Estimated Time of Arrival)。',
+            'ETD': '预计离港时间 (Estimated Time of Departure)。',
+            'S/C': '销售合同 (Sales Contract)。买卖双方正式贸易合同。',
+            'P/I': '形式发票 (Proforma Invoice)。用于买方申请进口许可或外汇。',
+            'C/O': '原产地证书 (Certificate of Origin)。证明货物原产地，用于清关及关税优惠。',
+            'AWB': '空运提单 (Air Waybill)，空运运输凭证，非物权凭证。',
+            'SWIFT': '环球银行金融电信协会，银行跨境支付通信标准。',
+            'QC': '质量控制 (Quality Control)。',
+            'Lead time': '生产周期/交货期，从下订单到交货所需时间。',
+            'B2B': '企业对企业电商模式。',
+            'B2C': '企业对消费者电商模式。',
+            'GSP': '普惠制，发达国家对发展中国家出口制成品给予关税优惠。',
+            'SGS': 'SGS检验证书，国际公认检验报告。'
+        };
+
+        // 客户开发渠道数据库 (保持不变)
+        const channelDatabase = {
+            'B2B平台': 'B2B平台如阿里巴巴国际站、中国制造网、环球资源等。建立公司主页，发布产品，主动联系询盘，积累客户。',
+            '展会': '参加国内外行业展会（如广交会、香港电子展），现场展示产品，交换名片，会后跟进。适合展示新品和面对面沟通。',
+            '社交媒体': '利用LinkedIn、Facebook、Instagram等社交平台，建立专业账号，加入行业群组，发布内容吸引潜在客户。',
+            '海关数据': '购买或使用海关数据（如ImportGenius、Panjiva），分析目标市场进口商，直接联系采购负责人。',
+            '搜索引擎': '通过Google、Bing等搜索关键词（如产品名+importer/buyer），找到潜在客户官网，挖掘联系方式。',
+            '邮件营销': '收集目标客户邮箱，发送定制开发信，持续跟进。注意邮件内容和发送频率，避免被拉黑。',
+            '谷歌地图': '利用谷歌地图搜索目标市场商铺、工厂，获取电话和网站，适合本地化开发。',
+            '行业名录': '查询行业协会网站、商业名录（如Kompass、ThomasNet），获取会员企业信息。',
+            '客户推荐': '维护好现有客户，请求推荐新客户，成交率往往更高。',
+            '贸促机构': '联系中国贸促会、各国驻华使馆商务处，获取潜在买家信息或参加对接活动。'
+        };
+
+        // 国家习俗数据库 (包含时区, 内容保持完整不变)
+        const countryDatabase = {
+            '日本': {
+                timezone: 9,
+                business: '日本人注重礼仪和等级制度，决策需层层审批，谈判时惯用“沉默破坚冰”。初次见面要鞠躬，名片要用双手递上，且文字面向对方。避免直接说“不”，改用“需要进一步研究”等委婉表达。',
+                religion: '神道教和佛教为主，无明显饮食禁忌，但注意不要用筷子传递食物（类似火葬习俗）。',
+                taboo: '忌数字“4”和“9”（发音同“死”和“苦”）。送礼不要送梳子，避免白色和荷花图案（用于葬礼）。',
+                gift: '送礼是常见礼仪，一定要用包装纸包好，用双手递送。收到礼物时不要当面拆开。',
+                negotiation: '注重长期关系，验货标准很高，但一旦建立信任忠诚度也很高。报价需合理，首次报价留有余地。'
+            },
+            '韩国': {
+                timezone: 9,
+                business: '韩国人讲究礼仪，善于谈判，条理分明，逻辑性强，态度庄重。要尊重其头衔和职位。',
+                religion: '基督教和佛教为主，无特殊饮食禁忌。',
+                taboo: '忌数字“4”。书写名字时忌用红色墨水（象征死亡）。',
+                gift: '初次见面可送小礼物，用双手递接。礼物最好选择本国特产。',
+                negotiation: '决策较快，但需高层确认。对价格敏感，善于讨价还价，要做好心理准备。'
+            },
+            '印度': {
+                timezone: 5.5,
+                business: '印度人重视人际关系，避免直接说“NO”，可用“we will see”代替。商务谈判节奏较慢，需多次跟进。',
+                religion: '印度教为主，不吃牛肉；伊斯兰教不吃猪肉。许多高种姓印度人吃素，宴请时最好选择素食餐厅。',
+                taboo: '忌用左手传递东西（左手被视为不洁）。避免谈论个人债务、贫困等话题。',
+                gift: '送礼受欢迎，但不要送牛皮制品（触犯印度教）或猪皮制品（触犯穆斯林）。',
+                negotiation: '价格敏感，喜欢讨价还价，对成交条件要求细致。尊重其宗教习惯可赢得信任。'
+            },
+            '美国': {
+                timezone: -4,
+                business: '美国人直率高效，珍惜时间，喜欢速战速决。报价要开门见山，提供整套方案，强调效率和投资回报率。',
+                religion: '基督教为主，无特殊饮食禁忌。',
+                taboo: '避免询问年龄、收入、宗教信仰等隐私。忌数字“13”和星期五。',
+                gift: '送礼不宜太贵重，以免有贿赂嫌疑。商务场合常在结束时赠送小纪念品。',
+                negotiation: '决策较快，注重数据和合同。对品质和服务要求高，喜欢创新产品。'
+            },
+            '德国': {
+                timezone: 2,
+                business: '德国人严谨规范，注重效率，追求品质，谈判风格审慎稳重，典型的“按流程”办事。一定要守时，称呼要用正式称谓（Herr/Frau + 姓氏）。',
+                religion: '基督教为主，无特殊饮食禁忌。',
+                taboo: '忌谈论战争、政治等敏感话题。商务场合忌节外生枝的闲谈。',
+                gift: '礼物讲究实用和包装，避免送带有明显宗教或政治符号的物品。',
+                negotiation: '准备工作要做足，注重技术细节和质量认证。对合同条款极为严格。'
+            },
+            '法国': {
+                timezone: 2,
+                business: '法国人浪漫健谈，时间观念不强。洽谈前需预约，着装趋于正式。忌过多谈论个人私事和家庭生活。',
+                religion: '天主教为主，无特殊饮食禁忌。',
+                taboo: '忌数字“13”。送礼避免送香水或化妆品（过于亲密）。不要打听政治倾向、个人收入。',
+                gift: '喜欢精美包装的礼物，如书籍、音乐、巧克力等。',
+                negotiation: '对商品质量要求很高，要求包装精美。合同细节需反复确认，最好派出对等人员。'
+            },
+            '英国': {
+                timezone: 1,
+                business: '英国人重身份、重等级，谈判时须注重身份的对等。商务谈判时要注重选择谈论的话题，宜谈天气，忌谈政治。',
+                religion: '基督教为主，无特殊饮食禁忌。',
+                taboo: '忌系有纹的领带（可能被视为军队仿制品）。不要把英国人称呼为“英国人”（English），用“British”更恰当。',
+                gift: '送礼一般避免太贵重，通常在结束时赠送。',
+                negotiation: '订立合同时注意索赔条款。英国人比较冷静持重，不轻易表露感情。'
+            },
+            '俄罗斯': {
+                timezone: 3,
+                business: '俄罗斯人计划性强，喜欢谈大额合同，对技术细节和索赔条款特别重视。英语使用较少，最好带翻译。',
+                religion: '东正教为主，无特殊饮食禁忌。',
+                taboo: '忌称呼“俄国人”（用“俄罗斯人”）。忌黑色（象征死亡）。',
+                gift: '送礼受欢迎，鲜花送单数（忌双数），避免黄色。',
+                negotiation: '特别善于讨价还价，对交易条件要求苛刻。签约后通常用TT电汇，很少用L/C。'
+            },
+            '中东/阿拉伯': {
+                timezone: 4,
+                business: '阿拉伯人重信义交情，谈生意必须先赢得他们的好感和信任。要尊重其宗教氛围，一天五次祷告不可打扰。',
+                religion: '伊斯兰教，禁食猪肉和动物内脏，严格禁酒。着装保守，女士忌露肩和过膝。',
+                taboo: '忌用左手传递东西。忌数字“13”。避免涉及政治问题，远离女性话题。',
+                gift: '送礼很常见，但不要送酒、猪皮制品或含有女性图像的物品。',
+                negotiation: '生活节奏缓慢，讨价还价是常态。谈判时肢体语言较多，喜欢面对面交流。'
+            },
+            '巴西': {
+                timezone: -3,
+                business: '巴西人热情友好，偏好面对面交流，决策较慢。商务会议通常会比计划的时间长，不要早退。',
+                religion: '天主教为主，无特殊饮食禁忌。',
+                taboo: '忌数字“13”。忌用大拇指和食指做“OK”手势（在巴西被视为粗俗）。不要直接用手接触食物。',
+                gift: '送礼避免送紫色（悲伤）或黑色（死亡相关的颜色）。',
+                negotiation: '追求量大低价，喜欢分期付款，对OEM模式感兴趣。尊重当地习惯可促进合作。'
+            },
+            '北欧（瑞典/挪威/芬兰等）': {
+                timezone: 2,
+                business: '北欧买家朴实谦恭、沉着冷静、务实高效。不善于讨价还价，喜欢就事论事。',
+                religion: '基督教路德宗为主，无特殊饮食禁忌。',
+                taboo: '芬兰忌双数鲜花（送5或7朵）。忌谈当地政治问题。',
+                gift: '赴宴需准时，向女主人送鲜花（5或7朵）以示尊重。在主人敬酒前不宜先饮。',
+                negotiation: '非常注重产品的质量、认证、环保、节能等方面，重视程度高于价格。'
+            },
+            '东南亚（泰国/越南等）': {
+                timezone: 7,
+                business: '东南亚商人大多和善诚恳、守时敬业。谈判氛围融洽，价格优惠、品质优的产品受欢迎。',
+                religion: '佛教为主，泰国忌摸头部（包括小孩）。越南忌摸头部。',
+                taboo: '忌用脚指物或跨过别人身体。礼物拿到后不能第一时间拆开。',
+                gift: '初次见面可送公司标识的礼品，大方且有文化内涵。',
+                negotiation: '注重性价比，喜欢有品牌的产品，邮件内容可详细展示公司实力。'
+            }
+        };
+
+        // 外贸流程明细数据库 (精简内容)
+        const processDatabase = {
+            '询盘 Inquiry': '及时回复（24小时内），详细了解客户背景，提供专业资料与报价单，记录需求后续跟进。',
+            '发盘 Offer': '内容完整（品名、数量、价格、交货期、付款方式），明确有效期，区分实盘虚盘，确认对方收到。',
+            '还盘 Counter-offer': '仔细分析对方新条件，计算成本变化，多次沟通保持顺畅，记录每次修改避免混乱。',
+            '接受 Acceptance': '确认所有条款无误，有效期内发出接受通知，回复“Accept”并附最终条款确认，合同即成立。',
+            '签订合同 Sign Contract': '使用标准模板，填清交货期、付款方式、违约责任，双方盖章签字，保存电子版。',
+            '备货准备': '制定生产计划，确认原材料到位，与工厂沟通交期，发出生产通知单，定期拍照留证。',
+            '跟进生产进度': '每周至少与工厂沟通一次，对比计划进度，及时处理异常，留存影像记录。',
+            '安排质检/验货': '依据合同检验标准，可自行或委托第三方（如SGS），出具报告，发现问题及时返工。',
+            '确认包装与唛头': '按合同或运输要求确认包装方式（木箱/纸箱）与唛头内容，拍照留底，确保适合海运。',
+            '备妥货物': '清点数量、核对唛头，存入仓库，通知货代订舱，准备相关单证。',
+            '租船订舱 Booking & Shipping': '根据货量选择整箱或拼箱，提供货物信息获取订舱确认(S/O)，安排拖车装货。',
+            '出口报关 Export Customs Clearance': '备好报关单、发票、装箱单、合同，委托报关行申报，配合查验，获取放行通知。',
+            '投保 Insurance': '按合同确定险别（一切险/水渍险），向保险公司投保，获取保险单，核对保险金额。',
+            '装船 Loading': '配合码头装船，获取装船通知，核对提单信息，确认货物已装船。',
+            '制单 Document Preparation': '按信用证或合同制作发票、装箱单、提单、原产地证等，确保单单一致，交单前仔细核对。',
+            '结汇 Settlement': '向银行提交单据，银行审核后款项入账，记录汇率及到账时间。',
+            '进口清关 Import Customs Clearance': '提前将单据发给客户，客户或其代理申报、缴税，海关放行后提货。',
+            '提货 Delivery': '凭正本提单或电放保函换取提货单，安排拖车提货，验货后完成交易。'
+        };
+
+        // 填充术语下拉：将 EXW, FOB, CIF, CFR 强制放在最前面，其余按字母顺序
+        const termSelect = document.getElementById('termSelect');
+        const channelSelect = document.getElementById('channelSelect');
+        const countrySelect = document.getElementById('countrySelect');
+        const processSelect = document.getElementById('processSelect');
+
+        function populateTermSelect() {
+            // 定义强制置顶顺序
+            const topTerms = ['EXW', 'FOB', 'CIF', 'CFR'];
+            // 获取所有术语
+            const allTerms = Object.keys(termDatabase);
+            // 其余术语排除置顶的四个，然后按字母排序
+            const remainingTerms = allTerms.filter(term => !topTerms.includes(term)).sort();
+            // 最终顺序：置顶术语 + 排序后的其余术语
+            const finalOrder = [...topTerms, ...remainingTerms];
+            
+            // 清空并重新填充
+            termSelect.innerHTML = '<option value="" disabled selected>— 选择常用术语 —</option>';
+            finalOrder.forEach(term => {
+                const option = document.createElement('option');
+                option.value = term;
+                option.textContent = term;
+                termSelect.appendChild(option);
+            });
+        }
+
+        function populateChannelSelect() {
+            const sortedChannels = Object.keys(channelDatabase).sort();
+            sortedChannels.forEach(ch => {
+                const option = document.createElement('option');
+                option.value = ch;
+                option.textContent = ch;
+                channelSelect.appendChild(option);
+            });
+        }
+
+        function populateCountrySelect() {
+            const sortedCountries = Object.keys(countryDatabase).sort();
+            sortedCountries.forEach(c => {
+                const option = document.createElement('option');
+                option.value = c;
+                option.textContent = c;
+                countrySelect.appendChild(option);
+            });
+        }
+
+        function populateProcessSelect() {
+            const processOrder = [
+                '询盘 Inquiry', '发盘 Offer', '还盘 Counter-offer', '接受 Acceptance',
+                '签订合同 Sign Contract', '备货准备', '跟进生产进度', '安排质检/验货',
+                '确认包装与唛头', '备妥货物', '租船订舱 Booking & Shipping', '出口报关 Export Customs Clearance',
+                '投保 Insurance', '装船 Loading', '制单 Document Preparation', '结汇 Settlement',
+                '进口清关 Import Customs Clearance', '提货 Delivery'
+            ];
+            processOrder.forEach(proc => {
+                if (processDatabase[proc]) {
+                    const opt = document.createElement('option');
+                    opt.value = proc;
+                    opt.textContent = proc;
+                    processSelect.appendChild(opt);
+                }
+            });
+        }
+
+        function searchTerm() {
+            const val = termSelect.value;
+            const resultDiv = document.getElementById('termResult');
+            if (!val) { resultDiv.innerHTML = `<p class="not-found">请先选择一个术语</p>`; return; }
+            resultDiv.innerHTML = `<p><span class="highlight">${val}</span><br>${termDatabase[val]}</p>`;
+        }
+
+        function searchChannel() {
+            const val = channelSelect.value;
+            const resultDiv = document.getElementById('channelResult');
+            if (!val) { resultDiv.innerHTML = `<p class="not-found">请先选择渠道</p>`; return; }
+            resultDiv.innerHTML = `<p><span class="highlight">${val}</span><br>${channelDatabase[val]}</p>`;
+        }
+
+        function getLocalStatus(hour) {
+            if (hour >= 0 && hour < 6) return '深夜，不宜电话，可发邮件。';
+            if (hour >= 6 && hour < 9) return '清晨，适合邮件或留言。';
+            if (hour >= 9 && hour < 12) return '上午工作时间，电话/邮件最佳。';
+            if (hour >= 12 && hour < 14) return '午休时间，避开非紧急事务。';
+            if (hour >= 14 && hour < 18) return '下午工作时间，适合跟进。';
+            if (hour >= 18 && hour < 21) return '傍晚/晚餐，可邮件勿电话。';
+            return '夜晚，休息时段，紧急可短信。';
+        }
+
+        function searchCountry() {
+            const val = countrySelect.value;
+            const resultDiv = document.getElementById('countryResult');
+            if (!val) { resultDiv.innerHTML = `<p class="not-found">请选择国家</p>`; return; }
+            const info = countryDatabase[val];
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const localTime = new Date(utc + (3600000 * info.timezone));
+            const hours = localTime.getHours();
+            const minutes = localTime.getMinutes().toString().padStart(2,'0');
+            const timeStr = `${localTime.getFullYear()}-${(localTime.getMonth()+1).toString().padStart(2,'0')}-${localTime.getDate().toString().padStart(2,'0')} ${hours.toString().padStart(2,'0')}:${minutes}`;
+            const status = getLocalStatus(hours);
+            let html = `<p><span class="highlight">${val}</span></p>`;
+            html += `<div class="time-info">⏰ ${timeStr} (UTC${info.timezone >=0 ? '+' : ''}${info.timezone})<br>📌 ${status}</div>`;
+            if (info.business) html += `<p><strong>📋 商业习俗</strong>：${info.business}</p>`;
+            if (info.taboo) html += `<p><strong>⚠️ 禁忌</strong>：${info.taboo}</p>`;
+            if (info.negotiation) html += `<p><strong>🤝 谈判风格</strong>：${info.negotiation}</p>`;
+            resultDiv.innerHTML = html;
+        }
+
+        function searchProcess() {
+            const val = processSelect.value;
+            const resultDiv = document.getElementById('processResult');
+            if (!val) { resultDiv.innerHTML = `<p class="not-found">请选择外贸环节</p>`; return; }
+            resultDiv.innerHTML = `<p><span class="highlight">${val}</span><br>${processDatabase[val]}</p>`;
+        }
+
+        document.getElementById('termSearchBtn').addEventListener('click', (e) => { e.preventDefault(); searchTerm(); });
+        document.getElementById('channelSearchBtn').addEventListener('click', (e) => { e.preventDefault(); searchChannel(); });
+        document.getElementById('countrySearchBtn').addEventListener('click', (e) => { e.preventDefault(); searchCountry(); });
+        document.getElementById('processSearchBtn').addEventListener('click', (e) => { e.preventDefault(); searchProcess(); });
+
+        populateTermSelect();
+        populateChannelSelect();
+        populateCountrySelect();
+        populateProcessSelect();
+    })();
+</script>
+</body>
+</html>
